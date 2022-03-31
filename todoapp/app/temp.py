@@ -1,10 +1,7 @@
-from re import I
+list = [1,2,3,4,5,6]
 
+print("List is:",list)
 
-my_dict = {}
+list = list.clear()
 
-
-my_dict[1] = "This is a some random peice of text"
-
-
-print(my_dict)
+print("List now is:",list)
