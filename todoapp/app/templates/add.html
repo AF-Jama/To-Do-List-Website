@@ -15,12 +15,23 @@
             <button type="submit">Add</button>
             <label for="note-text"></label>
         </form>
+        <form action="{{ url_for('delete_all')}}" method="post">
+            <button type="submit">DELETE ALL NOTES</button>
+        </form>
     </div>
 
     <div id="note-text-div">
         <!--area where to do notes are added, each note renders a new div with text and delete button-->
+        <h4>{{message}}</h4>
         {%for note in notess%}
-            <div style="color: black;">{{note}}</div>
+            <div id="notes-divs">
+                <p>{{note}}</p>
+                <div class="delete-div">
+                    <form action="{{ url_for('delete', note_number =  loop.index0 )}}" method="POST">
+                        <button id="delete-btn" type="submit" >DELETE</button>
+                    </form> <!--ADD method that is triggered when delete button is hit for a note, which then renders page -->
+                </div>
+            </div>
         {%endfor%}
     </div>
     
