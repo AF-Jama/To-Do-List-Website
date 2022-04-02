@@ -70,7 +70,7 @@ def notFound(e):
 
 @app.errorhandler(INTERNAL_SERVER_ERROR)
 def internal_server_error(e):
-    return render_template('internal.htmml')
+    return render_template('internal.html')
 
 
 if __name__ == "__main__":
