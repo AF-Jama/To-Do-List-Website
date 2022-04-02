@@ -15,7 +15,7 @@ body{
 #outer-box{
     max-width: 900px;
     min-width: 420px; /*allows outer box containing to resize up till 420px minumum size*/
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: 0 auto; /*centers*/
     text-align: center;
     color: red;
@@ -35,7 +35,7 @@ body{
 }
 
 #note-text-div{
-    border: 2px solid red;
+    border: 2px solid black;
     max-width: 900px;
     min-width: 420px;
     margin: 10px auto; /*creates margin between divs using margin top 10px*/
