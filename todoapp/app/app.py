@@ -1,6 +1,7 @@
+from http.client import INTERNAL_SERVER_ERROR
+from xmlrpc.client import SERVER_ERROR
 from flask import Flask, flash, redirect, render_template, request,g,session
 from flask_restful import Resource, Api,reqparse,abort
-from matplotlib.style import context
 
 
 
@@ -11,12 +12,16 @@ app.secret_key = "sfibrtuoytvRNtHV_ber6HAVDVTEVR?JNRioedmkr"
 def add():
     if request.method == "POST":
         note = request.form["note-text"]
+        if note == '':
+            '''triggered if an empty string is added'''
+            return redirect('/')
+
+        elif note in session['notes']:
+            return redirect('/')
+
         note_list = session['notes']
         note_list.append(note) # appends note list with new note
         session['note'] = note_list
-        print("============================")
-        for note in session['notes']:
-            print(note)
         return redirect('/')
 
 
@@ -26,6 +31,9 @@ def add():
                 print("SESSION CREATED")
                 session['notes'] =[] # sets to an empty list
                 return render_template('add.html', message = "No notes added yet/empty") # renders out page and context that notifies that there are no notes
+
+        elif session['notes'] == []:
+            return render_template('add.html', message = "No notes added yet/empty")
 
         else:
             '''triggered if "notes" key already exists'''
@@ -56,7 +64,13 @@ def delete_all():
 
 
 
+@app.errorhandler(404)
+def notFound(e):
+    return render_template('not_found.html')
 
+@app.errorhandler(INTERNAL_SERVER_ERROR)
+def internal_server_error(e):
+    return render_template('internal.htmml')
 
 
 if __name__ == "__main__":
