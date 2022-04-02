@@ -9,6 +9,7 @@ body{
     width: 100%;
     height: 100vh;
     border: 2px solid black;
+    background-color: rgb(144, 77, 207);
 }
 
 #outer-box{
@@ -18,6 +19,15 @@ body{
     margin: 0 auto; /*centers*/
     text-align: center;
     color: red;
+}
+
+#outer-box h1{
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.col-auto{
+    display: inline;
 }
 
 #form-div{
@@ -31,3 +41,11 @@ body{
     margin: 10px auto; /*creates margin between divs using margin top 10px*/
 }
 
+.btn btn-primary mb-3{
+    border-radius: 25%;
+    color: rgb(57, 57, 233);
+}
+
+.delete-div{
+    display: inline;
+}
